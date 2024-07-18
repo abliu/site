@@ -1,0 +1,98 @@
+body {
+  max-width: 1400px; /* expanded for sidenotes a la Tufte */
+  padding-left: 12.5%;
+  margin: auto; /* line-height moved to font in fonts.css */
+}
+
+/* header and footer areas */
+ul.menu {
+  padding: 0; /* reverse rule to indent uls with 40px usually */
+}
+.menu li { display: inline-block; } /* displays list items horizontally without
+bullets instead of vertically with bullets */
+.menu a, a:visited { /* even more minimalist: removed article-meta idea */
+  text-decoration: none; /* removes underlines from links */
+  background: #eee; /* gives light gray background */
+  padding: 5px; /* puts text inside color box */
+  border-radius: 5px; /* rounds the corners */
+  color: inherit; /* added to avoid link clicking changing color */
+}
+.menu, footer { text-align: center; }
+/* replaced titles (.title) with h1.title and substitles (h2) with p.subtitle,
+spec-ing font sizes and weights as in Tufte and distill */
+/* in general default margins seem fine except the ones after (a) h1.title, esp.
+(b) between h1.title and p.subtitle are too large; (a) is shrunk by line-height
+and (b) is shrunk by a negative top margin for subtitle */
+h1.title {
+  font-size: 3.2rem;
+  line-height: 1;
+}
+p.subtitle {
+  margin-top: -2rem;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+.sidenote,
+.marginnote {
+    float: right;
+    clear: right;
+    margin-right: -60%;
+    width: 50%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    vertical-align: baseline;
+    position: relative;
+}
+.marginnote-ind,
+.sidenote-number {
+    // font-family: et-book-roman-old-style, "Noto Emoji";
+    position: relative;
+    vertical-align: baseline;
+    user-select: none;
+    font-size: 0.7rem;
+    top: -0.5rem;
+    left: 0.1rem;
+}
+input.margin-toggle {
+    display: none;
+}
+
+// inside sidenote
+span.marginnote-ind,
+span.sidenote-number {
+    font-size: 1.1rem;
+}
+main.has-sidenotes > *:not(.sidenote):not(.marginnote) {
+    width: 55%;
+}
+/* removed footer: no footer right now */
+
+/* code */
+pre {
+  border: 1px solid #ddd;
+  box-shadow: 5px 5px 5px #eee;
+  padding: 1em;
+  overflow-x: auto;
+}
+code { background: #f9f9f9; }
+pre code { background: none; }
+
+/* misc elements */
+img, iframe, video { max-width: 100%; }
+main { hyphens: auto; }
+blockquote {
+  background: #f9f9f9;
+  border-left: 5px solid #ccc;
+  padding: 3px 1em 3px;
+}
+
+table {
+  margin: auto;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+}
+table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+thead, tfoot, tr:nth-child(even) { background: #eee; }

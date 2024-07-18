@@ -1,0 +1,11 @@
+{{ define "main" }}
+
+<h1 class="title">{{ .Title }}</h1>
+<p class="subtitle">{{ .Params.subtitle }}</p>
+{{ if (gt .Params.date 0) }}<p>{{ .Date.Format "January 2, 2006" }}</p>{{ end }}
+
+<main class="has-sidenotes">
+{{ .Content }}
+</main>
+
+{{ end }}
