@@ -1,6 +1,6 @@
 ---
-title: A Plain Markdown Post
-subtitle: Keep it simple, but not simpler
+title: Test Markdown Post
+subtitle: Thanks to Yihui Xie for this template
 author: Yihui Xie
 date: '2016-02-14'
 categories:

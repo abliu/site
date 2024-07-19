@@ -32,6 +32,21 @@ p.subtitle {
   font-weight: 300;
   font-size: 1.2rem;
 }
+/* Sidenotes/marginnotes
+   ========================================================================== */
+/* This is adapted from
+https://github.com/edwardtufte/tufte-css/blob/gh-pages/tufte.css. To make way
+for a sidenotes column, all immediate children of the main element (e.g. <p>s)
+have width reduced. Then each sidenote/marginnote involves two visible HTML
+elements: the superscripted sidenote number label in the main text (class
+sidenote-number/marginnote-ind), and the span containing the sidenote on the
+right side (class sidenote/marginnote). See layouts/shortcodes/sidenote.html for
+the arrangement. The following CSS acts on positions and sizes these elements
+correctly, as well as hiding sidenotes by default on narrow screens and making
+the number label clickable to toggle displaying sidenotes or not.*/
+main.has-sidenotes > *:not(.sidenote):not(.marginnote) {
+    width: 55%;
+}
 .sidenote,
 .marginnote {
     float: right;
@@ -45,9 +60,8 @@ p.subtitle {
     vertical-align: baseline;
     position: relative;
 }
-.marginnote-ind,
-.sidenote-number {
-    // font-family: et-book-roman-old-style, "Noto Emoji";
+.sidenote-number,
+.marginnote-ind {
     position: relative;
     vertical-align: baseline;
     user-select: none;
@@ -58,14 +72,28 @@ p.subtitle {
 input.margin-toggle {
     display: none;
 }
-
-// inside sidenote
-span.marginnote-ind,
-span.sidenote-number {
-    font-size: 1.1rem;
-}
-main.has-sidenotes > *:not(.sidenote):not(.marginnote) {
-    width: 55%;
+@media (max-width: 760px) {
+    main.has-sidenotes > *:not(.sidenote):not(.marginnote) {
+        width: 100%;
+    }
+    label.margin-toggle:not(.sidenote-number) {
+        display: inline;
+    }
+    .sidenote,
+    .marginnote {
+        display: none;
+    }
+    .margin-toggle:checked + .sidenote,
+    .margin-toggle:checked + .marginnote {
+        display: block;
+        float: left;
+        left: 1rem;
+        clear: both;
+        width: 95%;
+        margin: 1rem 2.5%;
+        vertical-align: baseline;
+        position: relative;
+    }
 }
 /* removed footer: no footer right now */
 
