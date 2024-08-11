@@ -1,0 +1,6 @@
+<ul>
+    {{ range .Site.Taxonomies.tags.favorite }}
+    <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+    </li>
+    {{ end }}
+</ul>
