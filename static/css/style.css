@@ -145,3 +145,13 @@ table {
 table thead th { border-bottom: 1px solid #ddd; }
 th, td { padding: 5px; }
 thead, tfoot, tr:nth-child(even) { background: #eee; }
+
+/* color classes, following Brewer Dark2 palette with n=8 */
+.col-cls-0 { color: #1B9E77; }
+.col-cls-1 { color: #D95F02; }
+.col-cls-2 { color: #7570B3; }
+.col-cls-3 { color: #E7298A; }
+.col-cls-4 { color: #66A61E; }
+.col-cls-5 { color: #E6AB02; }
+.col-cls-6 { color: #A6761D; }
+.col-cls-7 { color: #666666; }

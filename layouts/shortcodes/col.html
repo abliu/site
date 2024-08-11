@@ -1,0 +1,2 @@
+{{- $cls := printf "%s-%d" "col-cls" (.Get 0) -}}
+<span class="{{$cls}}">{{ .Inner }}</span>
