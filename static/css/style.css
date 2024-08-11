@@ -13,21 +13,27 @@ img, picture, svg, video {
   div) or 100% (not within such a div) */
 }
 
-html { line-sizing: normal; }
-
-/* My subset of margin: 0 to get rid of pesky blockquotes hanging out */
-
-body * { margin-left: 0; margin-right: 0 }
+html {
+  padding: 0px 8px; /* prevent body auto-margin from hugging left side */
+}
 
 body {
   min-height: 100vh;
   max-width: 1200px; /* expanded for sidenotes a la Tufte */
   font: 400 16px/1.55em -apple-system, BlinkMacSystemFont, "Roboto", Helvetica, sans-serif;
+  margin: auto;
+  background-color: #fffff8; /* match Tufte slightly yellow background */
 }
 
-main {
-  display: grid;
-  justify-content: center; /* centers items horizontally */
+/* My subset of margin: 0 to get rid of pesky blockquotes hanging out */
+
+body * {
+  margin-left: 0;
+  margin-right: 0
+}
+
+main.has-sidenotes {
+  width: 65%;
 }
 
 /* header and footer areas */
@@ -36,7 +42,7 @@ ul.menu {
 }
 .menu li { display: inline-block; } /* displays list items horizontally without
 bullets instead of vertically with bullets */
-.menu a, a:visited { /* even more minimalist: removed article-meta idea */
+.menu a, .menu a:visited { /* even more minimalist: removed article-meta idea */
   text-decoration: none; /* removes underlines from links */
   background: #eee; /* gives light gray background */
   padding: 5px; /* puts text inside color box */
@@ -70,9 +76,6 @@ right side (class sidenote/marginnote). See layouts/shortcodes/sidenote.html for
 the arrangement. The following CSS acts on positions and sizes these elements
 correctly, as well as hiding sidenotes by default on narrow screens and making
 the number label clickable to toggle displaying sidenotes or not.*/
-main.has-sidenotes > *:not(.sidenote):not(.marginnote) {
-    max-width: 65%;
-}
 .sidenote,
 .marginnote {
     float: right;
@@ -95,8 +98,8 @@ input.margin-toggle {
     display: none;
 }
 @media (max-width: 760px) {
-    main.has-sidenotes > *:not(.sidenote):not(.marginnote) {
-        max-width: 100%;
+    main.has-sidenotes {
+        width: 100%;
     }
     label.margin-toggle:not(.sidenote-number) {
         display: inline;
@@ -116,8 +119,25 @@ input.margin-toggle {
         vertical-align: baseline;
         position: relative;
     }
+
+    /* Figure stuff from https: //github.com/edwardtufte/tufte-css/blob/gh-pages/tufte.css */
+    figure {
+        max-width: 90%;
+    }
+
+    figcaption,
+    figure.fullwidth figcaption {
+        margin-right: 0%;
+        max-width: none;
+    }
 }
 /* removed footer: no footer right now */
+
+/* links: don't make blue. This avoids overemphasizing links and I think this is
+common enough practice that people are used to it. */
+a:link, a:visited {
+  color: inherit;
+}
 
 /* code */
 pre {
@@ -139,6 +159,7 @@ blockquote {
 }
 
 table {
+  margin: auto;
   border-top: 1px solid #666;
   border-bottom: 1px solid #666;
 }
@@ -155,3 +176,32 @@ thead, tfoot, tr:nth-child(even) { background: #eee; }
 .col-cls-5 { color: #E6AB02; }
 .col-cls-6 { color: #A6761D; }
 .col-cls-7 { color: #666666; }
+
+/* Figure stuff from https: //github.com/edwardtufte/tufte-css/blob/gh-pages/tufte.css */
+/* figure {
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  max-width: 55%;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  margin: 0 0 3em 0;
+}
+
+figcaption {
+  float: right;
+  clear: right;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  vertical-align: baseline;
+  position: relative;
+  max-width: 40%;
+}
+
+figure.fullwidth figcaption {
+  margin-right: 24%;
+} */
