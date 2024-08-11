@@ -5,6 +5,7 @@
 {{ if (gt .Params.date 0) }}<p>{{ .Date.Format "January 2, 2006" }}</p>{{ end }}
 
 <main class="has-sidenotes">
+{{ partial "toc.html" . }}
 {{ .Content }}
 </main>
 
